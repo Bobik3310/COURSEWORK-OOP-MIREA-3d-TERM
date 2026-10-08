@@ -7,8 +7,6 @@
 #include <vector>
 
 // Общий интерфейс для включения дерева в иерархию классов.
-// При интеграции с практической работой №2 интерфейс можно заменить базовым
-// классом из той работы, сохранив публичные методы TwoThreeTree.
 class AbstractSearchTree {
 public:
     virtual ~AbstractSearchTree() = default;
