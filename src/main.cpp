@@ -28,7 +28,6 @@ void show(const std::optional<int>& value) {
 } // namespace
 
 int main() {
-    // Чтобы русские сообщения корректно отображались, используйте UTF-8 терминал.
     TwoThreeTree tree;
     int choice = 0;
     while (true) {
