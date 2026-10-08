@@ -31,3 +31,81 @@
     1. Число посещённых узлов;
     2. Отсечений;
     3. Пропущенных ходов.
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Move {
+        <<struct>>
+        +int r
+        +int c
+    }
+
+    class Board {
+        -int n_
+        -int k_
+        -vector~char~ cells_
+        -int occupied_
+        +Board(int n, int k)
+        +size() int
+        +goal() int
+        +inside(int r, int c) bool
+        +at(int r, int c) char
+        +empty(int r, int c) bool
+        +full() bool
+        +occupied() int
+        +put(Move m, char who) void
+        +undo(Move m) void
+        +winsFrom(Move m, char who) bool
+        +print() void
+        +candidates() vector~Move~
+    }
+
+    class SearchStats {
+        <<struct>>
+        +long long nodes
+        +long long cutoffs
+        +long long skipped
+    }
+
+    class Bot {
+        -int WIN$
+        -Board& board_
+        -char me_
+        -char human_
+        -int depth_
+        -SearchStats stats_
+        -bool showTree_
+        -int shownLines_
+        -int MAX_TREE_LINES$
+        -int MAX_TREE_LEVEL$
+        -opponent(char who)$ char
+        -evaluate() long long
+        -orderedMoves(char player) vector~Move~
+        -minimax(int depth, long long alpha, long long beta, char player, Move last, char previous, int level) long long
+        -trace(int level, string message) void
+        +Bot(Board& board, char botChar, int depth, bool showTree)
+        +stats() SearchStats
+        +choose() Move
+    }
+
+    class Input {
+        <<utility>>
+        +readInt(string prompt, int low, int high)$ int
+    }
+
+    class Main {
+        <<entry point>>
+        +main() int
+    }
+
+    Bot --> Board : использует
+    Bot *-- SearchStats : хранит
+    Bot ..> Move : выбирает ход
+    Board ..> Move : принимает ходы
+    Main ..> Board : создаёт
+    Main ..> Bot : создаёт
+    Main ..> Input : вызывает
+    Main ..> Move : использует
+```
