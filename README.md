@@ -14,7 +14,7 @@
 Для Linux:
 
 ```bash
-g++ -std=c++17 -Wall -Wextra -Wpedantic -Iinclude src/TwoThreeTree.cpp src/main.cpp -o demo
+g++ -std=c++17 -Wall -Wextra -Wpedantic -Iinclude src/TwoThreeTree.cpp src/main.cpp -o prog
 ./demo
 ```
 
