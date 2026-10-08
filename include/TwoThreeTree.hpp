@@ -22,9 +22,6 @@ public:
     virtual void printStructure(std::ostream& out) const = 0;
 };
 
-// Настоящее 2–3-дерево: в устойчивом состоянии узел содержит 1 или 2 ключа,
-// а внутренний узел имеет 2 или 3 потомка. Все листья одной глубины.
-// Ключи хранятся как во внутренних узлах, так и в листьях (B-дерево порядка 3).
 class TwoThreeTree final : public AbstractSearchTree {
 public:
     TwoThreeTree() = default;
