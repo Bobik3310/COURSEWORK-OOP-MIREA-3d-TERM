@@ -1,8 +1,6 @@
 
 #include <algorithm>  // max, min, stable_sort
-#include <array>
 #include <climits>     // LLONG_MIN, LLONG_MAX
-#include <cmath>
 #include <iostream>    // cin, cout
 #include <limits>      // numeric_limits
 #include <stdexcept>   // исключения
@@ -12,7 +10,7 @@
 
 using namespace std;
 
-// Структура для хранения координат хода.
+// Глобальная структура для хранения координат хода.
 // r - номер строки, c - номер столбца.
 // -1 означает, что ход не задан.
 struct Move {
@@ -534,21 +532,21 @@ int readInt(const string& prompt, int low, int high) {
         cout << "Введите целое число от "
              << low << " до " << high << ".\n";
 
+        // Сбрасываем состояние ошибки cin
         cin.clear();
 
         cin.ignore(
             numeric_limits<streamsize>::max(),
             '\n'
-        );
+        ); // Удаляем неправильный ввод
     }
 }
 
 // Главная функция программы.
-int main() {
+int main(void) {
     try {
         cout << "Крестики-нолики: человек против бота\n";
 
-        // Пользователь задаёт параметры игры.
         int n = readInt("Размер поля N (3..20): ", 3, 20);
 
         int k = readInt(
